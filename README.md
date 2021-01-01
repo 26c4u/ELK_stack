@@ -171,37 +171,51 @@ _Which file do you update to make Ansible run the playbook on a specific machine
 _Which URL do you navigate to in order to check that the ELK server is running?_
 - http://your-ip:5601/app/kibana#/home?_g=()
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
-- Assuming that you have the network to run an ELK server we can then download the necessary files.
+### Installation
+Assuming that you have the network to run an ELK server we can then download the necessary files. Determine which machine will be the Ansible control node to deploy the playbooks from as this is where we will download the necessary files. Let's begin by installing docker in order to containerize our Ansible control node. We can install docker by running:
 
-- Determine which machine will be the Ansible control node to deploy the playbooks from as this is where we will download the necessary files.
+`$ apt install docker.io`
 
-- Let's begin by installing docker in order to containerize our Ansible control node. We can install docker by running `apt install docker.io`.
+We will then pull the ansible container image with: 
 
-- We will then pull the ansible container image with `docker pull cyberxsecurity/ansible`.
+`$ docker pull cyberxsecurity/ansible`
 
-- Then start our image with `docker run -it cyberxsecurity/ansible bash`. (Remember that we have to only run this command once as this spawns a container instance everytime we execute this command. We don't want to end up with multiple container instances in our machine. Next time we just need to run `docker start [container name]`).
+Then start our image with:
 
-- Now that we are inside of our ansible container we are going to run `git clone https://github.com/26c4u/ELK_stack`.
+`$ docker run -it cyberxsecurity/ansible bash`
 
-- Move the contents of the repo to /etc/ansible.
+Remember that we have to only run this command once as this spawns a container instance everytime we execute this command. We don't want to end up with multiple container instances in our machine. Next time we just need to run `docker start [container name]`.
 
-- Update the ansible.cfg file with the administrator's user name at line #107.
+Now that we are inside of our ansible container we are going to run:
 
-- Determine the IP addresses of the machines and update the hosts.yml. This is done by categorizing certain machines using headers and listing the ip addresses next to it.
+`git clone https://github.com/26c4u/ELK_stack`.
 
-- Run the elk.yml file to the install ELK stack on the target machines by running `ansible-playbook elk.yml`.
+Move the contents of the repo to `/etc/ansible`.
 
-- It is important to verify the result of the playbook to ensure the ELK stack is installed properly.
+Update the ansible.cfg file with the administrator's user name at line #107.
 
-- Then run the `ansible-playbook filebeat-playbook.yml` in the roles folder to install filebeat.
+Determine the IP addresses of the machines and update the hosts.yml. This is done by categorizing certain machines using headers and listing the ip addresses next to it.
 
-- Run the `ansible-playbook metricbeat-playbook.yml` to install metricbeat.
+Run the elk.yml file to the install ELK stack on the target machines by running:
 
-- Then verify in Kibana if filebeat and metricbeat are running by visiting `http://your-ip:5601/app/kibana#/home?_g=()` in your web browser.
+`ansible-playbook elk.yml`
 
-Filebeat - Add log data > System logs > DEB tab
-Metricbeat - Add metric data > Docker metrics > DEB tab
+It is important to verify the result of the playbook to ensure the ELK stack is installed properly.
 
-- If the widgets are populated with charts and graphs then congratulations, you have successfully added ELK in your network.
+![elk output](Diagrams/elk_screenshot.png)
+
+Then run the filebeat playbook in the roles folder to install filebeat:
+
+`ansible-playbook filebeat-playbook.yml`
+
+Next run the metricbeat playbook:
+
+`ansible-playbook metricbeat-playbook.yml`
+
+Then verify in Kibana if filebeat and metricbeat are running by visiting `http://your-ip:5601/app/kibana#/home?_g=()` in your web browser.
+
+Filebeat - Add log data &#8594; System logs &#8594; DEB tab
+Metricbeat - Add metric data &#8594; Docker metrics &#8594; DEB tab
+
+If the widgets are populated with datas and graphs then congratulations, you have successfully added ELK in your network.
