@@ -241,6 +241,8 @@ For Filebeat, go to `Add log data &#8594; System logs &#8594; DEB tab`. Click on
 
 For Metricbeat 'Add metric data &#8594; Docker metrics &#8594; DEB tab'
 
-![metricbeat output](Diagrams/meticbeat_success.png)
+![metricbeat output](Diagrams/metricbeat_success.png)
+
+This step ensures that Kibana is receiving data from Filebeat and Metricbeat.
 
 If the widgets are populated with data and graphs then congratulations, you have successfully added ELK in your network.
