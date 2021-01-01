@@ -235,11 +235,13 @@ $ ansible-playbook metricbeat-playbook.yml
 
 Then verify in Kibana if filebeat and metricbeat are running by visiting `http://your-ip:5601/app/kibana#/home?_g=()` in your web browser. 
 
-For Filebeat, go to `Add log data &#8594; System logs &#8594; DEB tab`. Click on Check data, it should return a success.
+To check if Kibana is receiving data from the Beats we would go to:
+
+For Filebeat 'Add log data &#8594; System logs &#8594; DEB tab'. Click on Check data, it should return a success.
 
 ![filebeat output](Diagrams/filebeat_success.png)
 
-For Metricbeat 'Add metric data &#8594; Docker metrics &#8594; DEB tab'
+For Metricbeat 'Add metric data &#8594; Docker metrics &#8594; DEB tab'.
 
 ![metricbeat output](Diagrams/metricbeat_success.png)
 
