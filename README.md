@@ -175,21 +175,29 @@ _Which URL do you navigate to in order to check that the ELK server is running?_
 ### Installation
 Assuming that you have the network to run an ELK server we can then download the necessary files. Determine which machine will be the Ansible control node to deploy the playbooks from as this is where we will download the necessary files. Let's begin by installing docker in order to containerize our Ansible control node. We can install docker by running:
 
-`$ apt install docker.io`
+```
+$ apt install docker.io
+```
 
 We will then pull the ansible container image with: 
 
-`$ docker pull cyberxsecurity/ansible`
+```
+$ docker pull cyberxsecurity/ansible
+```
 
 Then start our image with:
 
-`$ docker run -it cyberxsecurity/ansible bash`
+```
+$ docker run -it cyberxsecurity/ansible bash
+```
 
 Remember that we have to only run this command once as this spawns a container instance everytime we execute this command. We don't want to end up with multiple container instances in our machine. Next time we just need to run `docker start [container name]`.
 
 Now that we are inside of our ansible container we are going to run:
 
-`git clone https://github.com/26c4u/ELK_stack`.
+```
+$ git clone https://github.com/26c4u/ELK_stack
+```
 
 Move the contents of the repo to `/etc/ansible`.
 
@@ -199,7 +207,9 @@ Determine the IP addresses of the machines and update the hosts.yml. This is don
 
 Run the elk.yml file to the install ELK stack on the target machines by running:
 
-`ansible-playbook elk.yml`
+```
+$ ansible-playbook elk.yml
+```
 
 It is important to verify the result of the playbook to ensure the ELK stack is installed properly.
 
@@ -207,12 +217,14 @@ It is important to verify the result of the playbook to ensure the ELK stack is 
 
 Then run the filebeat playbook in the roles folder to install filebeat:
 
-`ansible-playbook filebeat-playbook.yml`
+```
+$ ansible-playbook filebeat-playbook.yml
+```
 
 Next run the metricbeat playbook:
 
 ```
-ansible-playbook metricbeat-playbook.yml
+$ ansible-playbook metricbeat-playbook.yml
 ```
 
 Then verify in Kibana if filebeat and metricbeat are running by visiting `http://your-ip:5601/app/kibana#/home?_g=()` in your web browser.
