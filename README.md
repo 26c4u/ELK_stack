@@ -211,7 +211,7 @@ Run the elk.yml file to the install ELK stack on the target machines by running:
 $ ansible-playbook elk.yml
 ```
 
-It is important to verify the result of the playbook to ensure the ELK stack is installed properly. Below is a screenshot for a reference of a successful ELK installation our machine.
+It is important to verify the result of the playbook to ensure the ELK stack is installed properly. Below is a screenshot for reference of a successful ELK installation in our machine.
 
 ![elk output](Diagrams/elk_screenshot.png)
 
@@ -235,16 +235,12 @@ $ ansible-playbook metricbeat-playbook.yml
 
 Then verify in Kibana if filebeat and metricbeat are running by visiting `http://your-ip:5601/app/kibana#/home?_g=()` in your web browser. 
 
-To check if Kibana is receiving data from the Beats we would go to:
-
-For Filebeat 'Add log data &#8594; System logs &#8594; DEB tab'. Click on Check data, it should return a success.
+For Filebeat, go to 'Add log data &#8594; System logs &#8594; DEB tab'. Click on Check data, it should return a success.
 
 ![filebeat output](Diagrams/filebeat_success.png)
 
-For Metricbeat 'Add metric data &#8594; Docker metrics &#8594; DEB tab'.
+For Metricbeat, go to 'Add metric data &#8594; Docker metrics &#8594; DEB tab'.
 
 ![metricbeat output](Diagrams/metricbeat_success.png)
-
-This step ensures that Kibana is receiving data from Filebeat and Metricbeat.
 
 If the widgets are populated with data and graphs then congratulations, you have successfully added ELK in your network.
