@@ -211,7 +211,9 @@ Then run the filebeat playbook in the roles folder to install filebeat:
 
 Next run the metricbeat playbook:
 
-`ansible-playbook metricbeat-playbook.yml`
+```
+ansible-playbook metricbeat-playbook.yml
+```
 
 Then verify in Kibana if filebeat and metricbeat are running by visiting `http://your-ip:5601/app/kibana#/home?_g=()` in your web browser.
 
