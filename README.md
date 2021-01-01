@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![ELK Stack Diagram](Diagrams/elk_stack_diagram.png)
+![ELK Stack Diagram](Images/elk_stack_diagram.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
@@ -133,7 +133,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![docker ps output](Diagrams/docker_ps_output.png)
+![docker ps output](Images/docker_ps_output.png)
 
 
 
@@ -213,7 +213,7 @@ $ ansible-playbook elk.yml
 
 It is important to verify the result of the playbook to ensure the ELK stack is installed properly. Below is a screenshot for reference of a successful ELK installation in our machine.
 
-![elk output](Diagrams/elk_screenshot.png)
+![elk output](Images/elk_screenshot.png)
 
 Check if a step has failed, then fix the playbook if needed.
 
@@ -223,7 +223,7 @@ Then run the filebeat playbook in the roles folder to install filebeat:
 $ ansible-playbook filebeat-playbook.yml
 ```
 
-![filebeat output](Diagrams/filebeat_screenshot.png)
+![filebeat output](Images/filebeat_screenshot.png)
 
 Next run the metricbeat playbook:
 
@@ -231,16 +231,16 @@ Next run the metricbeat playbook:
 $ ansible-playbook metricbeat-playbook.yml
 ```
 
-![metricbeat output](Diagrams/metricbeat_screenshot.png)
+![metricbeat output](Images/metricbeat_screenshot.png)
 
 Then verify in Kibana if filebeat and metricbeat are running by visiting `http://your-ip:5601/app/kibana#/home?_g=()` in your web browser. 
 
 For Filebeat, go to 'Add log data &#8594; System logs &#8594; DEB tab'. Click on Check data, it should return a success.
 
-![filebeat output](Diagrams/filebeat_success.png)
+![filebeat output](Images/filebeat_success.png)
 
 For Metricbeat, go to 'Add metric data &#8594; Docker metrics &#8594; DEB tab'.
 
-![metricbeat output](Diagrams/metricbeat_success.png)
+![metricbeat output](Images/metricbeat_success.png)
 
 If the widgets are populated with data and graphs then congratulations, you have successfully added ELK in your network.
