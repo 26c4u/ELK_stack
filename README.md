@@ -63,7 +63,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 ```
 
 ```yml
-#Ansible/roles/filebeat-playbook.yml
+#filebeat-playbook.yml
 ---
 - name: installing and launching filebeat
   hosts: webservers
@@ -92,7 +92,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 ```
 
 ```yml
-#Ansible/roles/filelbeat-playbook.yml
+#metricbeat-playbook.yml
 ---
 - name: Install metric beat
   hosts: webservers
@@ -225,7 +225,7 @@ SSH into the control node and follow the steps below:
 - Run the playbook, and navigate to the target machines to check that the installation worked as expected.
 
 _Which file is the playbook? Where do you copy it?_
-- The playbook file is the *-playbook.yml file and should be copied to /etc/ansible/roles.
+- The playbook file are files with the extension yml and should be copied to `/etc/ansible`.
 
 _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 - We need to specify in the hosts file the list all the machine in the network. IP addresses are delimited by a header that tells ansible which hosts should the playbook be run into.
@@ -247,13 +247,13 @@ We will then pull the ansible container image with:
 $ docker pull cyberxsecurity/ansible
 ```
 
-Then start our image with:
+Then initialize our image with:
 
 ```
 $ docker run -it cyberxsecurity/ansible bash
 ```
 
-Remember that we have to only run this command once as this spawns a container instance everytime we execute this command. We don't want to end up with multiple container instances in our machine. Next time we just need to run `docker start [container name]`.
+Remember that we have to only run this command once as it spawns a container instance everytime we execute this command. We don't want to end up with multiple container instances in our machine. Next time we just need to run `docker start [container name]`.
 
 Now that we are inside of our ansible container we are going to run:
 
@@ -267,13 +267,23 @@ Update the ansible.cfg file with the administrator's user name at line #107.
 
 Determine the IP addresses of the machines and update the hosts.yml. This is done by categorizing certain machines using headers and listing the ip addresses next to it.
 
+```yml
+[webservers]
+10.0.0.5 ansible_python_interpreter=/usr/bin/python3
+10.0.0.6 ansible_python_interpreter=/usr/bin/python3
+10.0.0.7 ansible_python_interpreter=/usr/bin/python3
+
+[elkservers]
+10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+```
+
 Run the elk.yml file to the install ELK stack on the target machines by running:
 
 ```
 $ ansible-playbook elk.yml
 ```
 
-It is important to verify the result of the playbook to ensure the ELK stack is installed properly. Below is a screenshot for reference of a successful ELK installation in our machine.
+It is important to verify the result of running the playbook to ensure the ELK stack is installed properly. Below is a screenshot for reference of a successful ELK installation in our machine.
 
 ![elk output](Images/elk_screenshot.png)
 
