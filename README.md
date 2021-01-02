@@ -235,7 +235,7 @@ _Which URL do you navigate to in order to check that the ELK server is running?_
 
 
 ### Installation
-Assuming that you have the network to run an ELK server, we can then download the necessary files. Determine which machine will be the Ansible control node to deploy the playbooks from as this is where we will download the necessary files. Let's begin by installing docker in order to containerize our Ansible control node. We can install docker by running:
+Assuming that you have the network to run an ELK server, we can then download the necessary files. Determine which machine will be the Ansible control node to deploy the playbooks from as this is where we will download the necessary files. Let's begin by installing Docker in order to containerize the Ansible control node. We can install docker by running:
 
 ```
 $ apt install docker.io
@@ -247,15 +247,15 @@ We will then pull the ansible container image with:
 $ docker pull cyberxsecurity/ansible
 ```
 
-Then initialize our image with:
+Then initialize the image with:
 
 ```
 $ docker run -it cyberxsecurity/ansible bash
 ```
 
-Remember that we have to only run this command once as it spawns a container instance everytime we execute this command. We don't want to end up with multiple container instances in our machine. Next time we just need to run `docker start [container name]`.
+Remember that we have to only run this command once as it spawns a container instance everytime we execute this command. We don't want to end up with duplicate container instances in the machine. Next time we just need to run `docker start [container name]`.
 
-Now that we are inside of our ansible container we are going to run:
+Now that we are inside of the ansible container we are going to run:
 
 ```
 $ git clone https://github.com/26c4u/ELK_stack
@@ -283,7 +283,7 @@ Run the elk.yml file to the install ELK stack on the target machines by running:
 $ ansible-playbook elk.yml
 ```
 
-It is important to verify the result of running the playbook to ensure the ELK stack is installed properly. Below is a screenshot for reference of a successful ELK installation in our machine.
+It is important to verify the result of running the playbook to ensure the ELK stack is installed properly. Below is a screenshot for reference of a successful ELK installation in a machine.
 
 ![elk output](Images/elk_screenshot.png)
 
