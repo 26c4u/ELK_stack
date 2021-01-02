@@ -307,7 +307,7 @@ $ ansible-playbook metricbeat-playbook.yml
 
 Then verify in Kibana if Filebeat and Metricbeat are running by visiting `http://your-ip:5601/app/kibana#/home?_g=()` in your web browser. 
 
-For Filebeat, go to 'Add log data &#8594; System logs &#8594; DEB tab'. Click on Check data wher it should return a success if installation went well.
+For Filebeat, go to 'Add log data &#8594; System logs &#8594; DEB tab'. Click on Check data where it should return a success if installation went well.
 
 ![filebeat output](Images/filebeat_success.png)
 
