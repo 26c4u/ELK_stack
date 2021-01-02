@@ -247,7 +247,7 @@ We will then pull the ansible container image with:
 $ docker pull cyberxsecurity/ansible
 ```
 
-Then initialize the image with:
+Then initialize the image:
 
 ```
 $ docker run -it cyberxsecurity/ansible bash
@@ -255,7 +255,7 @@ $ docker run -it cyberxsecurity/ansible bash
 
 Remember that we have to only run this command once as it spawns a container instance everytime we execute this command. We don't want to end up with duplicate container instances in the machine. Next time we just need to run `docker start [container name]`.
 
-Now that we are inside of the ansible container we are going to run:
+Now that we are inside of the ansible container we are going to clone the repo:
 
 ```
 $ git clone https://github.com/26c4u/ELK_stack
@@ -283,13 +283,13 @@ Run the elk.yml file to the install ELK stack on the target machines by running:
 $ ansible-playbook elk.yml
 ```
 
-It is important to verify the result of running the playbook to ensure the ELK stack is installed properly. Below is a screenshot for reference of a successful ELK installation in a machine.
+It is important to verify the result of running the playbook to ensure that the ELK stack is installed properly. Below is a screenshot for reference of a successful ELK installation in a machine.
 
 ![elk output](Images/elk_screenshot.png)
 
 Check if a step has failed, then fix the playbook if needed.
 
-Then run the filebeat playbook in the roles folder to install filebeat:
+Afterwards, run the Filebeat playbook in the roles folder to install filebeat:
 
 ```
 $ ansible-playbook filebeat-playbook.yml
@@ -297,7 +297,7 @@ $ ansible-playbook filebeat-playbook.yml
 
 ![filebeat output](Images/filebeat_screenshot.png)
 
-Next run the metricbeat playbook:
+Next run the Metricbeat playbook:
 
 ```
 $ ansible-playbook metricbeat-playbook.yml
@@ -305,9 +305,9 @@ $ ansible-playbook metricbeat-playbook.yml
 
 ![metricbeat output](Images/metricbeat_screenshot.png)
 
-Then verify in Kibana if filebeat and metricbeat are running by visiting `http://your-ip:5601/app/kibana#/home?_g=()` in your web browser. 
+Then verify in Kibana if Filebeat and Metricbeat are running by visiting `http://your-ip:5601/app/kibana#/home?_g=()` in your web browser. 
 
-For Filebeat, go to 'Add log data &#8594; System logs &#8594; DEB tab'. Click on Check data, it should return a success.
+For Filebeat, go to 'Add log data &#8594; System logs &#8594; DEB tab'. Click on Check data wher it should return a success if installation went well.
 
 ![filebeat output](Images/filebeat_success.png)
 
@@ -315,4 +315,4 @@ For Metricbeat, go to 'Add metric data &#8594; Docker metrics &#8594; DEB tab'.
 
 ![metricbeat output](Images/metricbeat_success.png)
 
-If the widgets are populated with data and graphs then congratulations, you have successfully added ELK in your network.
+If the widgets are populated with data and graphs then congratulations!, you have successfully added ELK in your network.
