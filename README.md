@@ -6,7 +6,7 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - elk.yml
+elk.yml
 
 ```yml
 ---
@@ -112,11 +112,11 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses   |
 |----------|---------------------|------------------------|
-| Jump Box | Yes                 | 12.213.134.141 10.1.0.4|
+| Jump Box | Yes                 | 12.213.134.141	  |
 | ELK VM   | No                  | 10.0.0.4               |
-| Web-1    | No                  | 10.0.0.4 10.1.0.4      |
-| Web-2    | No                  | 10.0.0.4 10.1.0.4      |
-| Web-3    | No                  | 10.0.0.4 10.1.0.4      |
+| Web-1    | No                  | 10.0.0.4	          |
+| Web-2    | No                  | 10.0.0.4	          |
+| Web-3    | No                  | 10.0.0.4	          |
 
 
 
@@ -125,8 +125,8 @@ A summary of the access policies in place can be found in the table below.
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because we can configure multiple machines at once in the entire network by just running a playbook.
 
 The playbook implements the following tasks:
-- The first part specifies the hosts where the playbook is going to install the ELK stack. It also defines the remote user that is installing the playbook
-- Then, it installs docker for containerization
+- The first part specifies the hosts where the playbook is going to install the ELK stack. It also defines the remote user that is installing the playbook.
+- Then, it installs docker for containerization.
 - Next, it installs pip for python to install the necessary modules for docker.
 - It will then setup the appropriate virtual memory needed to run smoothly.
 - Lastly, the elk container will be downloaded, configured, and open necessary ports.
@@ -160,10 +160,10 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 - Copy the filebeat-config.yml and metricbeat-config.yml file to /etc/ansible/files folder.
 - Update the hosts file to include the ip address of the target machines.
-- Run the playbook, and navigate to target machines to check that the installation worked as expected.
+- Run the playbook, and navigate to the target machines to check that the installation worked as expected.
 
 _Which file is the playbook? Where do you copy it?_
-- The playbook file is the *-playbook.yml file and should be copied to /etc/ansible/roles
+- The playbook file is the *-playbook.yml file and should be copied to /etc/ansible/roles.
 
 _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 - We need to specify in the hosts file the list all the machine in the network. IP addresses are delimited by a header that tells ansible which hosts should the playbook be run into.
@@ -173,7 +173,7 @@ _Which URL do you navigate to in order to check that the ELK server is running?_
 
 
 ### Installation
-Assuming that you have the network to run an ELK server we can then download the necessary files. Determine which machine will be the Ansible control node to deploy the playbooks from as this is where we will download the necessary files. Let's begin by installing docker in order to containerize our Ansible control node. We can install docker by running:
+Assuming that you have the network to run an ELK server, we can then download the necessary files. Determine which machine will be the Ansible control node to deploy the playbooks from as this is where we will download the necessary files. Let's begin by installing docker in order to containerize our Ansible control node. We can install docker by running:
 
 ```
 $ apt install docker.io
